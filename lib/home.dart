@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'tabs/tab-widget.dart';
 
 class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
@@ -10,7 +11,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
     void initState() {
       super.initState();
-      _controller = TabController(length: 4, vsync: this);
+      _controller = TabController(length: 3, vsync: this);
     }
   
   @override
@@ -26,7 +27,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           title: Text('Pestañas con Flutter'),
           bottom: getTabBar(),
         ),
-        body: getTabBarView(),
+        body: getTabBarView(
+          <Widget>[
+            TabWidget('assets/mario0.png'),
+            TabWidget('assets/mario.png'),
+            TabWidget('assets/mario2.png'),
+          ]
+        ),
       );
   }
 
@@ -41,9 +48,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         ),
         Tab(
           icon: Icon(Icons.looks_3),
-        ),
-        Tab(
-          icon: Icon(Icons.looks_4),
         ),
       ],
       controller: _controller,
